@@ -72,7 +72,7 @@ $jsonSchema = '{
                 "Cnpj": {
                     "required": true,
                     "type": "string",
-                    "maxLength": 14
+                    "pattern": "^[0-9]{14}"
                 },
                 "InscricaoMunicipal": {
                     "required": true,
@@ -88,12 +88,12 @@ $jsonSchema = '{
                 "Cnpj": {
                     "required": false,
                     "type": ["string","null"],
-                    "maxLength": 14
+                    "pattern": "^[0-9]{14}"
                 },
                 "Cpf": {
                     "required": false,
                     "type": ["string","null"],
-                    "maxLength": 11
+                    "pattern": "^[0-9]{11}"
                 },
                 "InscricaoMunicipal": {
                     "required": false,
@@ -210,8 +210,8 @@ $jsonSchema = '{
                             "type": ["number", "null"]
                         },
                         "Aliquota": {
-                            "required": true,
-                            "type": "number"
+                            "required": false,
+                            "type": ["number","null"],
                         },
                         "DescontoIncondicionado": {
                             "required": false,
@@ -236,12 +236,12 @@ $jsonSchema = '{
                 "Cnpj": {
                     "required": false,
                     "type": ["string","null"],
-                    "maxLength": 14
+                    "pattern": "^[0-9]{14}"
                 },
                 "Cpf": {
                     "required": false,
                     "type": ["string","null"],
-                    "maxLength": 11
+                    "pattern": "^[0-9]{11}"
                 },
                 "InscricaoMunicipal": {
                     "required": false,
@@ -272,21 +272,21 @@ $std = new \stdClass();
 $std->IdentificacaoRps = new \stdClass();
 $std->IdentificacaoRps->Numero = 11; //limite 15 digitos
 $std->IdentificacaoRps->Serie = '1'; //BH deve ser string numerico
-$std->IdentificacaoRps->Tipo = 1; //1 - RPS 2 - Nota Fiscal Conjugada (Mista) 3 - Cupom
+$std->IdentificacaoRps->Tipo = 1; //1 - RPS 2-Nota Fiscal Conjugada (Mista) 3-Cupom
 $std->DataEmissao = '2018-10-31T12:33:22';
 $std->NaturezaOperacao = 1; // 1 – Tributação no município
                             // 2 - Tributação fora do município
                             // 3 - Isenção
                             // 4 - Imune
-                            // 5 –Exigibilidade suspensa por decisão judicial
+                            // 5 – Exigibilidade suspensa por decisão judicial
                             // 6 – Exigibilidade suspensa por procedimento administrativo
 
 $std->RegimeEspecialTributacao = 1;    // 1 – Microempresa municipal
-                                        // 2 - Estimativa
-                                        // 3 – Sociedade de profissionais
-                                        // 4 – Cooperativa
-                                        // 5 – MEI – Simples Nacional
-                                        // 6 – ME EPP – Simples Nacional
+                                       // 2 - Estimativa
+                                       // 3 – Sociedade de profissionais
+                                       // 4 – Cooperativa
+                                       // 5 – MEI – Simples Nacional
+                                       // 6 – ME EPP – Simples Nacional
 
 $std->OptanteSimplesNacional = 1; //1 - SIM 2 - Não
 $std->IncentivoCultural = 2; //1 - SIM 2 - Não
