@@ -1,0 +1,256 @@
+{
+    "title": "RPS",
+    "type": "object",
+    "properties": {
+        "IdentificacaoRps": {
+            "required": true,
+            "type": "object",
+            "properties": {
+                "Numero": {
+                    "required": true,
+                    "type": "integer",
+                    "pattern": "^[0-9]{1,15}"
+                },
+                "Serie": {
+                    "required": true,
+                    "type": "string",
+                    "maxLength": 5
+                },
+                "Tipo": {
+                    "required": true,
+                    "type": "integer",
+                    "pattern": "^[1-3]{1}"
+                }
+            }
+        },
+        "DataEmissao": {
+            "required": true,
+            "type": "string",
+            "pattern": "^([0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T(2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9])$"
+        },
+        "NaturezaOperacao": {
+            "required": true,
+            "type": "integer",
+            "pattern": "^[1-6]{1}"
+        },
+        "RegimeEspecialTributacao": {
+            "required": true,
+            "type": "integer",
+            "pattern": "^[1-6]{1}"
+        },
+        "OptanteSimplesNacional": {
+            "required": true,
+            "type": "integer",
+            "pattern": "^[1-2]{1}"
+        },
+        "IncentivoCultural": {
+            "required": true,
+            "type": "integer",
+            "pattern": "^[1-2]{1}"
+        },
+        "Status": {
+            "required": true,
+            "type": "integer",
+            "pattern": "^[1-2]{1}"
+        },
+        "Prestador": {
+            "required": true,
+            "type": "object",
+            "properties": {
+                "Cnpj": {
+                    "required": true,
+                    "type": "string",
+                    "maxLength": 14
+                },
+                "InscricaoMunicipal": {
+                    "required": true,
+                    "type": "string",
+                    "maxLength": 14
+                }
+            }
+        },
+        "Tomador": {
+            "required": true,
+            "type": "object",
+            "properties": {
+                "Cnpj": {
+                    "required": false,
+                    "type": ["string","null"],
+                    "maxLength": 14
+                },
+                "Cpf": {
+                    "required": false,
+                    "type": ["string","null"],
+                    "maxLength": 11
+                },
+                "InscricaoMunicipal": {
+                    "required": false,
+                    "type": ["string","null"],
+                    "maxLength": 14
+                },
+                "RazaoSocial": {
+                    "required": true,
+                    "type": "string"
+                },
+                "Endereco": {
+                    "required": false,
+                    "type": ["object","null"],
+                    "properties": {
+                        "Endereco": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "Numero": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "Complemento": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "Bairro": {
+                            "required": true,
+                            "type": "string"
+                        },
+                        "CodigoMunicipio": {
+                            "required": true,
+                            "type": "integer",
+                            "pattern": "^[0-9]{7}"
+                        },
+                        "Uf": {
+                            "required": true,
+                            "type": "string",
+                            "maxLength": 2
+                        },
+                        "Cep": {
+                            "required": true,
+                            "type": "integer",
+                            "pattern": "^[0-9]{8}"
+                        }
+                    }
+                }
+            }
+        },    
+        "Servico": {
+            "required": true,
+            "type": "object",
+            "properties": {
+                "ItemListaServico": {
+                    "required": true,
+                    "type": "string"
+                },
+                "CodigoTributacaoMunicipio": {
+                    "required": true,
+                    "type": "string"
+                },
+                "Discriminacao": {
+                    "required": true,
+                    "type": "string"
+                },
+                "CodigoMunicipio": {
+                    "required": true,
+                    "type": "integer",
+                    "pattern": "^[0-9]{7}"
+                },
+                "Valores": {
+                    "required": true,
+                    "type": "object",
+                    "properties": {
+                        "ValorServicos": {
+                            "required": true,
+                            "type": "number"
+                        },
+                        "ValorDeducoes": {
+                            "required": false,
+                            "type": ["number", "null"]
+                        },
+                        "ValorPis": {
+                            "required": false,
+                            "type": ["number", "null"]
+                        },
+                        "ValorCofins": {
+                            "required": false,
+                            "type": ["number", "null"]
+                        },
+                        "ValorInss": {
+                            "required": false,
+                            "type": ["number", "null"]
+                        },
+                        "ValorIr": {
+                            "required": false,
+                            "type": ["number", "null"]
+                        },
+                        "ValorCsll": {
+                            "required": false,
+                            "type": ["number", "null"]
+                        },
+                        "IssRetido": {
+                            "required": true,
+                            "type": "integer",
+                            "pattern": "^[1-2]{1}"
+                        },
+                        "ValorIss": {
+                            "required": false,
+                            "type": ["number", "null"]
+                        },
+                        "OutrasRetencoes": {
+                            "required": false,
+                            "type": ["number", "null"]
+                        },
+                        "Aliquota": {
+                            "required": true,
+                            "type": "number"
+                        },
+                        "DescontoIncondicionado": {
+                            "required": false,
+                            "type": ["number", "null"]
+                        },
+                        "DescontoCondicionado": {
+                            "required": false,
+                            "type": ["number", "null"]
+                        }
+                    }
+                }
+            }
+        },
+        "IntermediarioServico": {
+            "required": false,
+            "type": ["object","null"],
+            "properties": {
+                "RazaoSocial": {
+                    "required": true,
+                    "type": "string"
+                },
+                "Cnpj": {
+                    "required": false,
+                    "type": ["string","null"],
+                    "maxLength": 14
+                },
+                "Cpf": {
+                    "required": false,
+                    "type": ["string","null"],
+                    "maxLength": 11
+                },
+                "InscricaoMunicipal": {
+                    "required": false,
+                    "type": ["string","null"],
+                    "maxLength": 14
+                }
+            }
+        },
+        "ConstrucaoCivil": {
+            "required": false,
+            "type": ["object","null"],
+            "properties": {
+                "CodigoObra": {
+                    "required": true,
+                    "type": "string"
+                },
+                "Art": {
+                    "required": true,
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
